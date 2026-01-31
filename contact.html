@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNOW | Contacto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <canvas id="canvas-particles"></canvas>
+
+    <header>
+        <a href="index.html" class="logo-small"
+            style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+            <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
+            <span>SNOW TECH</span>
+        </a>
+        <div class="hidden md:flex">
+            <a href="index.html" class="nav-link">INICIO</a>
+            <a href="about.html" class="nav-link">NOSOTROS</a>
+            <a href="services.html" class="nav-link">SERVICIOS</a>
+            <a href="contact.html" class="nav-link" style="color:var(--accent)">CONTACTO</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+        </div>
+    </header>
+
+    <div class="hud">
+        <span class="hud-value" id="speed-meter">0</span> <span
+            style="color:var(--accent);opacity:0.7;font-size:0.8rem;">km/s</span>
+        <div class="stasis-bar" id="stasis-bar"></div>
+    </div>
+
+    <main class="pt-32 pb-20 px-4 min-h-screen flex items-center">
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Left Info -->
+            <div class="text-left">
+                <div class="tag-line mb-4 animate-fade-in">Conexión</div>
+                <h1 class="text-5xl md:text-6xl font-light text-white mb-8">Inicia la Transmisión</h1>
+                <p class="text-xl text-gray-400 mb-12">Estamos listos para recibir los parámetros de tu próximo
+                    proyecto. Nuestro equipo decodificará tus requerimientos en 24 horas.</p>
+
+                <div class="space-y-8">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] shrink-0 bg-[#00f0ff10]">
+                            ✉
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Email Encriptado</h4>
+                            <p class="text-gray-400">hello@snowtech.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] shrink-0 bg-[#00f0ff10]">
+                            📍
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Base de Operaciones</h4>
+                            <p class="text-gray-400">Dodecahedron Tower, Floor 42<br>Digital District</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form -->
+            <div class="card h-auto p-10" style="opacity: 1; transform: none; width: 100%; max-width: none;">
+                <h3 class="text-2xl text-white mb-6 font-bold">Formulario de Contacto</h3>
+                <form class="flex flex-col gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Identidad</label>
+                            <input type="text" placeholder="Tu Nombre"
+                                class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Frecuencia</label>
+                            <input type="email" placeholder="Tu Email"
+                                class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Datos del Mensaje</label>
+                        <textarea placeholder="Cuéntanos sobre tu proyecto..." rows="4"
+                            class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button
+                        class="bg-[var(--accent)] text-black font-bold py-4 px-8 mt-4 hover:bg-white transition-colors tracking-widest uppercase text-sm">
+                        Enviar Transmisión
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8 text-left">
+            <div>
+                <a href="index.html" class="logo-small mb-4"
+                    style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                    <img src="assets/logo.png" alt="Snow Tech"
+                        style="height: 35px; width: auto; filter: drop-shadow(0 0 5px var(--accent));">
+                    <span>SNOW TECH</span>
+                </a>
+                <p>Arquitectura digital para el futuro.</p>
+
+                <!-- Newsletter Form -->
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--accent)] mb-3">Newsletter</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Email"
+                            class="bg-white/5 border border-white/10 px-3 py-2 rounded text-white text-xs w-full focus:border-[var(--accent)] outline-none transition-colors">
+                        <button
+                            class="bg-[var(--accent)] text-black px-3 py-2 rounded font-bold hover:bg-white transition-colors">></button>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legal</h4>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Privacidad</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Términos</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Social</h4>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Twitter</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">LinkedIn</p>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-white/10 opacity-50 text-xs">
+            © 2024 SNOW Inc. All systems operational.
+        </div>
+    </footer>
+
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNOW | Final Fixed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- IMPORT MAP -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <!-- CAPAS -->
+    <canvas id="canvas-particles"></canvas>
+    <div id="layer-webgl"></div>
+    <div id="layer-css"></div>
+
+    <header>
+        <a href="index.html" class="logo-small"
+            style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+            <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
+            <span>SNOW TECH</span>
+        </a>
+        <div class="hidden md:flex">
+            <a href="index.html" class="nav-link" style="color:var(--accent)">INICIO</a>
+            <a href="about.html" class="nav-link">NOSOTROS</a>
+            <a href="services.html" class="nav-link">SERVICIOS</a>
+            <a href="contact.html" class="nav-link">CONTACTO</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+        </div>
+    </header>
+
+
+
+    <!-- MODAL -->
+    <div id="service-modal">
+        <div class="modal-card">
+            <div onclick="closeModal()"
+                style="position:absolute; top:1rem; right:1.5rem; cursor:pointer; color:#fff; font-size:1.5rem;">✕</div>
+            <div id="modal-icon-container"
+                style="margin-bottom: 2rem; width: 60px; height: 60px; margin: 0 auto; fill:var(--accent);"></div>
+            <h2 id="modal-title" style="font-size: 2rem; margin-bottom: 1rem; color: #fff;">Service</h2>
+            <p id="modal-desc" style="color: #a0aec0; font-size: 1.1rem; line-height: 1.6;">Desc.</p>
+        </div>
+    </div>
+
+    <main>
+        <!-- 0. HERO -->
+        <section data-index="0">
+            <div class="hero-content" style="text-align: center;">
+                <div
+                    style="font-family: 'Manrope'; font-size: 7rem; font-weight: 200; background: linear-gradient(180deg, #fff, #a5f3fc); -webkit-background-clip: text; background-clip: text; color: transparent;">
+                    SNOW</div>
+                <div
+                    style="font-family: 'JetBrains Mono'; letter-spacing: 0.4em; color: var(--accent); font-size: 0.8rem; text-shadow: 0 0 10px var(--accent);">
+                    DIGITAL ARCHITECTURE</div>
+            </div>
+        </section>
+
+        <!-- 1. PROPUESTA DE VALOR + SLIDER MERCADO -->
+        <section data-index="1">
+            <div class="card">
+                <div class="tag-line">01 — Estructura</div>
+                <h2>Tu Segundo Cerebro</h2>
+                <p class="mb-6">Exterioriza tu cognición. Recupera tu enfoque. Un sistema diseñado para gestionar la
+                    complejidad sin fricción.</p>
+
+                <div class="slider-wrapper" id="market-slider">
+                    <div class="slide-item active">
+                        <div class="stat-number">35%</div>
+                        <div class="stat-label">AUMENTO DE PRODUCTIVIDAD</div>
+                    </div>
+                    <div class="slide-item">
+                        <div class="stat-number">2.5h</div>
+                        <div class="stat-label">AHORRADAS DIARIAMENTE</div>
+                    </div>
+                    <div class="slide-item">
+                        <div class="stat-number">0%</div>
+                        <div class="stat-label">PÉRDIDA DE INFORMACIÓN</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SERVICIOS -->
+        <section data-index="2">
+            <div class="service-container">
+                <div class="floating-header">
+                    <div class="tag-line" style="justify-content:center;">02 — Módulos</div>
+                    <h2 style="font-size: 3.5rem; margin: 0; text-shadow: 0 0 30px rgba(0, 217, 255, 0.2);">Servicios
+                        360°</h2>
+                    <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 1rem;">Interactúa con el núcleo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. IMPACTO + SLIDER KPI -->
+        <section data-index="3">
+            <div class="card">
+                <div class="tag-line">03 — Impacto</div>
+                <h2>Resultados Reales</h2>
+                <p class="mb-6">Transformamos datos en decisiones estratégicas. Métricas validadas por nuestros
+                    partners.</p>
+
+                <div class="slider-wrapper" id="kpi-slider">
+                    <div class="slide-item active">
+                        <div class="stat-number">+500%</div>
+                        <div class="stat-label">RETORNO DE INVERSIÓN (ROI)</div>
+                    </div>
+                    <div class="slide-item">
+                        <div class="stat-number">-85ms</div>
+                        <div class="stat-label">LATENCIA GLOBAL</div>
+                    </div>
+                    <div class="slide-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">UPTIME GARANTIZADO</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FUTURO -->
+        <section data-index="4">
+            <div class="card">
+                <div class="tag-line">04 — Futuro</div>
+                <h2>Innovación & I+D</h2>
+                <p>El dodecaedro representa la complejidad. Investigamos IA y Computación Cuántica para resolver los
+                    problemas de mañana hoy.</p>
+            </div>
+        </section>
+
+        <!-- 5. ALIADOS -->
+        <section data-index="5">
+            <div class="service-container">
+                <div class="floating-header" style="margin-bottom: 20rem;">
+                    <div class="tag-line" style="justify-content:center;">05 — Red Global</div>
+                    <h2 style="font-size: 3.5rem; margin:0;">Ecosistema</h2>
+                    <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 1rem;">Tecnología integrada.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. LEAD MAGNET: SYSTEM AUDIT -->
+        <section data-index="6">
+            <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-4">
+                <!-- Left: Floating Logo -->
+                <div class="flex justify-center items-center opacity-60 order-2 md:order-1">
+                    <img src="assets/logo.png" alt="Snow Tech Logo" class="animate-spin-slow"
+                        style="width: 100%; max-width: 350px; height: auto;">
+                </div>
+
+                <!-- Right: Form Card -->
+                <div class="card order-1 md:order-2"
+                    style="border: 1px solid var(--accent); background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(0,0,0,0.4) 100%); width: 100%; max-width: none;">
+                    <div class="tag-line" style="color: var(--accent);">Upgrade</div>
+                    <h2>Auditoría de Sistema</h2>
+                    <p class="mb-6">Descubre cuellos de botella en tu infraestructura digital. Nuestros arquitectos
+                        realizarán un análisis preliminar gratuito.</p>
+                    <form class="flex flex-col gap-4 mt-6">
+                        <div class="flex gap-4 flex-col">
+                            <input type="text" placeholder="URL de tu sitio web"
+                                class="bg-white/5 border border-white/10 px-4 py-3 rounded text-white text-sm w-full focus:border-[var(--accent)] outline-none"
+                                required>
+                            <input type="email" placeholder="Email corporativo"
+                                class="bg-white/5 border border-white/10 px-4 py-3 rounded text-white text-sm w-full focus:border-[var(--accent)] outline-none"
+                                required>
+                        </div>
+                        <button type="submit"
+                            class="bg-[var(--accent)] text-black font-bold py-3 px-6 rounded hover:bg-white transition-colors uppercase tracking-widest text-xs w-full md:w-auto">
+                            Solicitar Auditoría
+                        </button>
+                        <p class="text-[0.7rem] opacity-50 mt-2">*Análisis limitado a 5 slots semanales.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8 text-left">
+            <div>
+                <a href="index.html" class="logo-small mb-4"
+                    style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                    <img src="assets/logo.png" alt="Snow Tech"
+                        style="height: 35px; width: auto; filter: drop-shadow(0 0 5px var(--accent));">
+                    <span>SNOW TECH</span>
+                </a>
+                <p>Arquitectura digital para el futuro.</p>
+
+                <!-- Newsletter Form -->
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--accent)] mb-3">Newsletter</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Email"
+                            class="bg-white/5 border border-white/10 px-3 py-2 rounded text-white text-xs w-full focus:border-[var(--accent)] outline-none transition-colors">
+                        <button
+                            class="bg-[var(--accent)] text-black px-3 py-2 rounded font-bold hover:bg-white transition-colors">></button>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legal</h4>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Privacidad</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Términos</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Social</h4>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Twitter</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">LinkedIn</p>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-white/10 opacity-50 text-xs">
+            © 2024 SNOW Inc. All systems operational.
+        </div>
+    </footer>
+
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>

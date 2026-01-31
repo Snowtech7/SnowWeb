@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNOW | Servicios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="page-services">
+    <canvas id="canvas-particles"></canvas>
+    <div id="layer-css"></div>
+
+    <header>
+        <a href="index.html" class="logo-small"
+            style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+            <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
+            <span>SNOW TECH</span>
+        </a>
+        <div class="hidden md:flex">
+            <a href="index.html" class="nav-link">INICIO</a>
+            <a href="about.html" class="nav-link">NOSOTROS</a>
+            <a href="services.html" class="nav-link" style="color:var(--accent)">SERVICIOS</a>
+            <a href="contact.html" class="nav-link">CONTACTO</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+        </div>
+    </header>
+
+
+
+    <!-- 0. HERO (Cube Placeholder) -->
+    <!-- 0. HERO (Title) -->
+    <section data-index="0"
+        class="flex flex-col justify-center items-center h-screen text-center relative overflow-hidden">
+        <div class="relative z-10 pointer-events-none">
+            <div class="tag-line mb-4 animate-fade-in" style="justify-content: center;">Capacidades</div>
+            <h1 class="text-6xl md:text-8xl font-light text-white mb-6 tracking-tighter">Servicios</h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Explora nuestro ecosistema digital.</p>
+        </div>
+    </section>
+
+    <!-- 1. CUBE EXPLORER -->
+    <section data-index="1" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+        <!-- The cube will be rendered here by the JS -->
+    </section>
+
+    <!-- 2. Web -->
+    <section data-index="2">
+        <div class="card">
+            <div class="text-[var(--accent)] mb-4">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M7.41 16.59L2.83 12l4.58-4.59L6 6l-6 6 6 6 1.41-1.41zM16.59 16.59L21.17 12l-4.58-4.59L18 6l6 6-6 6-1.41-1.41zM12.41 4.58L11 6l-4 12 1.41 1.41L13.83 6z" />
+                </svg>
+            </div>
+            <div class="tag-line">01 — Web</div>
+            <h2>Desarrollo Web</h2>
+            <p>Sitios corporativos, landing pages de alto impacto y aplicaciones web progresivas (PWA) optimizadas para
+                velocidad.</p>
+            <div
+                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
+                Más detalles ->
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Marketing -->
+    <section data-index="3">
+        <div class="card">
+            <div class="text-[var(--accent)] mb-4">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z" />
+                </svg>
+            </div>
+            <div class="tag-line">02 — Growth</div>
+            <h2>Growth Marketing</h2>
+            <p>Estrategias de adquisición de usuarios basadas en datos. SEO técnico, campañas PPC y optimización de
+                conversión.</p>
+            <div
+                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
+                Más detalles ->
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. AI -->
+    <section data-index="4">
+        <div class="card">
+            <div class="text-[var(--accent)] mb-4">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9.5 10c.83 0 1.5.67 1.5 1.5S10.33 13 9.5 13s-1.5-.67-1.5-1.5S8.67 10 9.5 10zm5 0c.83 0 1.5.67 1.5 1.5S15.33 13 14.5 13s-1.5-.67-1.5-1.5S13.67 10 14.5 10z" />
+                </svg>
+            </div>
+            <div class="tag-line">03 — AI</div>
+            <h2>Chatbots & AI</h2>
+            <p>Automatización de atención al cliente e integración de modelos LLM para potenciar tus flujos de trabajo.
+            </p>
+            <div
+                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
+                Más detalles ->
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Design -->
+    <section data-index="5">
+        <div class="card">
+            <div class="text-[var(--accent)] mb-4">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M7 14c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM18.71.29c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.54 3.54 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.12-2.13zM14.06 4.94L3 16.01V20h3.99l11.07-11.07-3.99-3.99z" />
+                </svg>
+            </div>
+            <div class="tag-line">04 — Design</div>
+            <h2>Diseño UI/UX</h2>
+            <p>Interfaces que cautivan. Diseño de producto digital centrado en la usabilidad y la estética premium.</p>
+            <div
+                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
+                Más detalles ->
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Automation -->
+    <section data-index="6">
+        <div class="card">
+            <div class="text-[var(--accent)] mb-4">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M19.44 12.99l-2.54-.29c-.1-.98-.4-1.92-.85-2.78l1.6-1.95c.53-.64.42-1.58-.26-2.12l-1.41-1.41c-.63-.53-1.58-.42-2.12.26l-1.95 1.6c-.86-.45-1.8-.75-2.78-.85l-.29-2.54C9.06 2.43 8.24 2 7.5 2h-2c-.74 0-1.56.43-1.72 1.01l-.29 2.54c-.98.1-1.92.4-2.78.85l-1.95-1.6c-.64-.53-1.58-.42-2.12.26L1.22 6.44c-.53.63-.42 1.58.26 2.12l1.6 1.95c-.45.86-.75 1.8-.85 2.78l-2.54.29C-1.06 13.57 0 15 1.5 15h18c1.5 0 2.56-1.43 2.44-2.01zM12 15c-1.66 0-3-1.34-3-3s1.34 3 3-3 3 1.34 3 3-1.34 3-3 3z" />
+                </svg>
+            </div>
+            <div class="tag-line">05 — Automation</div>
+            <h2>Automatización</h2>
+            <p>Workflows inteligentes con n8n y Zapier. Reduce tareas repetitivas y escala tu productividad.</p>
+            <div
+                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
+                Más detalles ->
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Funnels -->
+    <section data-index="7">
+        <div class="card">
+            <div class="text-[var(--accent)] mb-4">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 4h18v2H3zM6 9h12v2H6zM10 14h4v2h-4z" />
+                </svg>
+            </div>
+            <div class="tag-line">06 — Funnels</div>
+            <h2>Funnels de Venta</h2>
+            <p>Arquitectura de conversión. Diseñamos el viaje del usuario desde la visita hasta la venta.</p>
+            <div
+                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
+                Más detalles ->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8 text-left">
+            <div>
+                <a href="index.html" class="logo-small mb-4"
+                    style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                    <img src="assets/logo.png" alt="Snow Tech"
+                        style="height: 35px; width: auto; filter: drop-shadow(0 0 5px var(--accent));">
+                    <span>SNOW TECH</span>
+                </a>
+                <p>Arquitectura digital para el futuro.</p>
+
+                <!-- Newsletter Form -->
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--accent)] mb-3">Newsletter</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Email"
+                            class="bg-white/5 border border-white/10 px-3 py-2 rounded text-white text-xs w-full focus:border-[var(--accent)] outline-none transition-colors">
+                        <button
+                            class="bg-[var(--accent)] text-black px-3 py-2 rounded font-bold hover:bg-white transition-colors">></button>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legal</h4>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Privacidad</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Términos</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Social</h4>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Twitter</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">LinkedIn</p>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-white/10 opacity-50 text-xs">
+            © 2024 SNOW Inc. All systems operational.
+        </div>
+    </footer>
+
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>
