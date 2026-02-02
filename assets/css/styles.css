@@ -16,6 +16,30 @@ body {
     font-family: 'Manrope', sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+/* --- RESPONSIVE TOKENS --- */
+.hero-title {
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 200;
+    line-height: 1.1;
+    background: linear-gradient(180deg, #fff, #a5f3fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 200;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: white;
+}
+
+.metric-value {
+    font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
 }
 
 /* --- 2. CAPAS DE RENDERIZADO --- */
@@ -89,6 +113,27 @@ header {
     color: var(--accent);
 }
 
+/* MOBILE MENU */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-desktop {
+        display: none !important;
+    }
+}
+
 .hud {
     position: fixed;
     bottom: 3rem;
@@ -131,25 +176,10 @@ main {
 section {
     height: 100vh;
     display: flex;
+    justify-content: center;
     align-items: center;
     position: relative;
-}
-
-section:not([data-index="0"]):not([data-index="2"]):not([data-index="5"]):not([data-index="6"]) {
-    padding-left: 12%;
-}
-
-section[data-index="0"],
-section[data-index="2"],
-section[data-index="5"],
-section[data-index="6"] {
-    justify-content: center;
-}
-
-section[data-index="3"] {
-    justify-content: flex-end;
-    padding-left: 0;
-    padding-right: 12%;
+    padding: 0 4rem;
 }
 
 /* --- 5. TARJETAS & SLIDERS --- */
@@ -164,8 +194,8 @@ section[data-index="3"] {
     max-width: 500px;
     height: 420px;
     opacity: 0;
-    transform: translateX(-30px);
-    transition: all 1s ease;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -173,7 +203,18 @@ section[data-index="3"] {
 
 section.active .card {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
+}
+
+.interaction-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease 0.5s;
+}
+
+section.active .interaction-title {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .tag-line {
@@ -463,11 +504,15 @@ section.active .floating-header {
     }
 
     .floating-header {
-        margin-bottom: 12rem;
+        margin-bottom: 6rem;
     }
 
     .hud {
         display: none;
+    }
+
+    section[data-index="5"] .floating-header {
+        margin-bottom: 8rem;
     }
 }
 
@@ -485,6 +530,469 @@ section.active .floating-header {
     animation: spin-slow 60s linear infinite;
 }
 
+/* --- 8. GLITCH EFFECT --- */
+@keyframes glitch {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px var(--accent),
+            0 0 20px var(--accent),
+            0 0 30px var(--accent);
+        transform: translate(0);
+    }
+
+    20% {
+        text-shadow:
+            -2px 0 var(--accent),
+            2px 0 #ff00ff;
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        text-shadow:
+            2px 0 #00ffff,
+            -2px 0 var(--accent);
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        text-shadow:
+            0 0 10px var(--accent),
+            -2px 0 #ff00ff,
+            2px 0 #00ffff;
+        transform: translate(-1px, 1px);
+    }
+
+    80% {
+        text-shadow:
+            2px 0 var(--accent),
+            -2px 0 #00ffff;
+        transform: translate(1px, -1px);
+    }
+}
+
+.glitch-text {
+    display: inline-block;
+    animation: glitch 3s infinite;
+    color: var(--accent);
+}
+
+/* --- 9. PRICING CARDS --- */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.pricing-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--glass-border);
+    transition: background 0.3s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.pricing-card:hover::before {
+    background: var(--accent);
+}
+
+.pricing-card.featured {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 40px rgba(139, 242, 198, 0.2);
+}
+
+.pricing-card.featured::before {
+    background: linear-gradient(90deg, var(--accent), #fff, var(--accent));
+}
+
+.pricing-card .level-tag {
+    font-family: 'JetBrains Mono';
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.pricing-card h3 {
+    font-family: 'JetBrains Mono';
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.pricing-card .description {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card .price {
+    font-family: 'JetBrains Mono';
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card .cta-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.8rem 1.5rem;
+    font-family: 'JetBrains Mono';
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+.pricing-card .cta-btn:hover {
+    background: var(--accent);
+    color: black;
+}
+
+.pricing-card.featured .cta-btn {
+    background: var(--accent);
+    color: black;
+}
+
+.pricing-card.featured .cta-btn:hover {
+    background: white;
+}
+
+@media (max-width: 968px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+}
+
+/* --- 10. HORIZONTAL METRICS --- */
+.metrics-row {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+.metric-item {
+    text-align: center;
+}
+
+.metric-value {
+    font-family: 'JetBrains Mono';
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 0 30px rgba(139, 242, 198, 0.3);
+    line-height: 1;
+}
+
+.metric-label {
+    font-family: 'JetBrains Mono';
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .metrics-row {
+        gap: 2rem;
+    }
+
+    .metric-value {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- 11. ARCHITECTURE COLUMNS --- */
+.architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1100px;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.arch-column {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s;
+}
+
+.arch-column.past {
+    opacity: 0.6;
+}
+
+.arch-column.future {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(139, 242, 198, 0.15);
+}
+
+.arch-column h4 {
+    font-family: 'JetBrains Mono';
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.arch-column p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .architecture-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- 12. TECH STACK --- */
+.tech-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono';
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tech-stack span {
+    transition: color 0.3s;
+}
+
+.tech-stack span:hover {
+    color: var(--accent);
+}
+
+.tech-divider {
+    color: var(--accent);
+    opacity: 0.5;
+}
+
+/* --- 13. CUBE FACE CONTENT --- */
+.cube-face-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;
+    height: 100%;
+}
+
+.cube-face-content .phase-title {
+    font-family: 'JetBrains Mono';
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.cube-face-content h3 {
+    font-family: 'JetBrains Mono';
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.cube-face-content p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.cube-face-content .cube-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.5rem 1rem;
+    font-family: 'JetBrains Mono';
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cube-face-content .cube-btn:hover {
+    background: var(--accent);
+    color: black;
+}
+
+.cube-slogan {
+    font-family: 'JetBrains Mono';
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(139, 242, 198, 0.5);
+}
+
+.cube-stack {
+    font-family: 'JetBrains Mono';
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+}
+
+/* --- 14. PHASE ACCORDION --- */
+.phase-accordion {
+    max-width: 800px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.phase-accordion details {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.phase-accordion details[open] {
+    border-color: var(--accent);
+}
+
+.phase-accordion summary {
+    padding: 1.5rem;
+    cursor: pointer;
+    font-family: 'JetBrains Mono';
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.phase-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.phase-accordion summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--accent);
+    transition: transform 0.3s;
+}
+
+.phase-accordion details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.phase-accordion .phase-content {
+    padding: 0 1.5rem 1.5rem;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.phase-accordion .phase-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.phase-accordion .phase-content li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.phase-accordion .phase-content li:last-child {
+    border-bottom: none;
+}
+
+.phase-accordion .phase-content li::before {
+    content: '>';
+    color: var(--accent);
+    margin-right: 0.75rem;
+    font-family: 'JetBrains Mono';
+}
+
+/* --- 15. CTA BUTTONS --- */
+.cta-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: black;
+    padding: 1rem 2.5rem;
+    font-family: 'JetBrains Mono';
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 30px rgba(139, 242, 198, 0.3);
+}
+
+.cta-primary:hover {
+    background: white;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+}
+
+.section-title {
+    font-family: 'JetBrains Mono';
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
 /* SERVICES PAGE OVERRIDES */
 body.page-services section {
     padding-left: 0 !important;
@@ -493,4 +1001,32 @@ body.page-services section {
 
 body.page-services #layer-webgl {
     display: none !important;
+}
+
+/* --- 16. FAQ & AUDITORIA SECTIONS --- */
+section[data-index="6"],
+section[data-index="7"] {
+    height: auto;
+    min-height: 100vh;
+    padding: 6rem 0;
+}
+
+section[data-index="7"] .card {
+    height: auto;
+    opacity: 1;
+    transform: none;
+    padding: 1.5rem 2rem;
+}
+
+section[data-index="6"] .card {
+    height: auto;
+    opacity: 1;
+    transform: none;
+}
+
+/* Make FAQ cards visible without animation dependency */
+section[data-index="7"].active .card,
+section[data-index="6"].active .card {
+    opacity: 1;
+    transform: none;
 }

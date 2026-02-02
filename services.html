@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNOW | Servicios</title>
+    <title>SNOW | Servicios - Construye Tu Entidad Digital</title>
+    <meta name="description"
+        content="Servicios de desarrollo web, marketing, IA, diseño y automatización. Cada uno puede contratarse solo o como parte de tu sistema evolutivo.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="importmap">
         {
@@ -22,149 +24,375 @@
     <div id="layer-css"></div>
 
     <header>
-        <a href="index.html" class="logo-small"
-            style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-            <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
-            <span>SNOW TECH</span>
-        </a>
-        <div class="hidden md:flex">
-            <a href="index.html" class="nav-link">INICIO</a>
-            <a href="about.html" class="nav-link">NOSOTROS</a>
-            <a href="services.html" class="nav-link" style="color:var(--accent)">SERVICIOS</a>
-            <a href="contact.html" class="nav-link">CONTACTO</a>
-            <a href="blog.html" class="nav-link">BLOG</a>
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center pointer-events-none px-4 md:px-8">
+            <a href="index.html" class="logo-small pointer-events-auto"
+                style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
+                <span>SNOW TECH</span>
+            </a>
+            <div class="nav-desktop hidden md:flex pointer-events-auto">
+                <a href="index.html" class="nav-link">INICIO</a>
+                <a href="about.html" class="nav-link">NOSOTROS</a>
+                <a href="services.html" class="nav-link" style="color:var(--accent)">SERVICIOS</a>
+                <a href="contact.html" class="nav-link">CONTACTO</a>
+                <a href="blog.html" class="nav-link">BLOG</a>
+            </div>
+            <button class="mobile-menu-btn md:hidden pointer-events-auto" onclick="toggleMobileMenu()">☰</button>
         </div>
     </header>
 
+    <!-- MOBILE OVERLAY -->
+    <div id="mobile-overlay"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-deep); z-index:100; display:none; flex-direction:column; justify-content:center; align-items:center; gap:2rem;">
+        <div onclick="toggleMobileMenu()"
+            style="position:absolute; top:2.5rem; right:4rem; cursor:pointer; color:white; font-size:2rem;">✕</div>
+        <a href="index.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">INICIO</a>
+        <a href="about.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">NOSOTROS</a>
+        <a href="services.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">SERVICIOS</a>
+        <a href="contact.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">CONTACTO</a>
+        <a href="blog.html" class="nav-link" onclick="toggleMobileMenu()" style="margin:0; font-size:1.5rem;">BLOG</a>
+    </div>
 
+    <script>
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-overlay');
+            overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
 
-    <!-- 0. HERO (Cube Placeholder) -->
-    <!-- 0. HERO (Title) -->
+    <!-- MODAL -->
+    <div id="service-modal">
+        <div class="modal-card">
+            <div onclick="closeModal()"
+                style="position:absolute; top:1rem; right:1.5rem; cursor:pointer; color:#fff; font-size:1.5rem;">✕</div>
+            <div id="modal-icon-container"
+                style="margin-bottom: 2rem; width: 60px; height: 60px; margin: 0 auto; fill:var(--accent);"></div>
+            <h2 id="modal-title" style="font-size: 2rem; margin-bottom: 1rem; color: #fff;">Service</h2>
+            <p id="modal-desc" style="color: #a0aec0; font-size: 1.1rem; line-height: 1.6;">Desc.</p>
+        </div>
+    </div>
+
+    <!-- 0. HERO -->
     <section data-index="0"
         class="flex flex-col justify-center items-center h-screen text-center relative overflow-hidden">
-        <div class="relative z-10 pointer-events-none">
-            <div class="tag-line mb-4 animate-fade-in" style="justify-content: center;">Capacidades</div>
-            <h1 class="text-6xl md:text-8xl font-light text-white mb-6 tracking-tighter">Servicios</h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Explora nuestro ecosistema digital.</p>
+        <div class="relative z-10 pointer-events-none px-4">
+            <div class="tag-line mb-4 animate-fade-in" style="justify-content: center;">Capacidades Modulares</div>
+            <h1 class="text-5xl md:text-7xl font-light text-white mb-6 tracking-tighter">Construye Tu <span
+                    class="glitch-text">Entidad</span></h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto" style="line-height: 1.6;">
+                Cada servicio puede contratarse individual o como parte de tu sistema evolutivo.<br>
+                <strong style="color: var(--accent);">Juntos, multiplican tu impacto.</strong>
+            </p>
+
+            <!-- Phase Tags -->
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+                <span
+                    style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem;">🌐
+                    Fase 1: Presencia</span>
+                <span
+                    style="background: rgba(139, 242, 198, 0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem; border: 1px solid var(--accent);">🤖
+                    Fase 2: Ventas</span>
+                <span
+                    style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem;">🧠
+                    Fase 3: Operaciones</span>
+            </div>
         </div>
     </section>
 
     <!-- 1. CUBE EXPLORER -->
-    <section data-index="1" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+    <section data-index="1" class="flex flex-col justify-center items-center h-screen relative overflow-hidden px-6">
+        <div class="relative z-10 text-center mb-12 pointer-events-none">
+            <h2 class="section-h2" style="font-size: clamp(2rem, 4vw, 3rem);">¿Qué área quieres conectar?</h2>
+            <p class="opacity-50 text-sm tracking-widest uppercase">Interactúa con el nexo de tu departamento</p>
+        </div>
         <!-- The cube will be rendered here by the JS -->
     </section>
 
-    <!-- 2. Web -->
-    <section data-index="2">
-        <div class="card">
-            <div class="text-[var(--accent)] mb-4">
-                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M7.41 16.59L2.83 12l4.58-4.59L6 6l-6 6 6 6 1.41-1.41zM16.59 16.59L21.17 12l-4.58-4.59L18 6l6 6-6 6-1.41-1.41zM12.41 4.58L11 6l-4 12 1.41 1.41L13.83 6z" />
-                </svg>
+    <!-- 2. WEB - Fase 1 Component -->
+    <section data-index="2" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+        <div
+            class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6 pointer-events-auto">
+            <!-- Left: Solution Card -->
+            <div class="card flex flex-col items-center text-center md:items-start md:text-left"
+                style="max-width: none; border-color: var(--accent); position: relative; overflow: hidden;">
+                <div
+                    style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent);">
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span
+                        style="background: rgba(139, 242, 198, 0.2); padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.65rem; color: var(--accent);">FASE
+                        1</span>
+                </div>
+                <div class="text-[var(--accent)] mb-4">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M7.41 16.59L2.83 12l4.58-4.59L6 6l-6 6 6 6 1.41-1.41zM16.59 16.59L21.17 12l-4.58-4.59L18 6l6 6-6 6-1.41-1.41zM12.41 4.58L11 6l-4 12 1.41 1.41L13.83 6z" />
+                    </svg>
+                </div>
+                <div class="tag-line">01 — Web</div>
+                <h2 class="section-h2">Desarrollo Web</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.8;">Tu base digital. Sitios de alto impacto optimizados para
+                    velocidad, conversión y SEO.</p>
+
+                <div class="flex gap-6 flex-wrap justify-center md:justify-start mb-6">
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--accent);">&lt;3s</div>
+                        <div style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5;">
+                            Carga</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--accent);">100</div>
+                        <div style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5;">
+                            PageSpeed</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--accent);">SEO</div>
+                        <div style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5;">
+                            Ready</div>
+                    </div>
+                </div>
             </div>
-            <div class="tag-line">01 — Web</div>
-            <h2>Desarrollo Web</h2>
-            <p>Sitios corporativos, landing pages de alto impacto y aplicaciones web progresivas (PWA) optimizadas para
-                velocidad.</p>
-            <div
-                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
-                Más detalles ->
+
+            <!-- Right: Features -->
+            <div class="text-center md:text-left">
+                <h4
+                    style="font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                    Incluye:</h4>
+                <ul class="inline-block text-left"
+                    style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 2.2;">
+                    <li style="color: var(--accent);">✓ Diseño responsive para todos los dispositivos</li>
+                    <li style="color: var(--accent);">✓ Optimización de Core Web Vitals</li>
+                    <li style="color: var(--accent);">✓ Integración con CMS (WordPress, Webflow)</li>
+                    <li style="color: var(--accent);">✓ SSL, CDN y hosting optimizado</li>
+                    <li style="color: var(--accent);">✓ Analytics y tracking configurado</li>
+                </ul>
+                <div style="margin-top: 2rem;">
+                    <span style="font-size: 0.75rem; opacity: 0.5;">Evoluciona a → </span>
+                    <span style="font-size: 0.75rem; color: var(--accent);">Chatbot IA integrado</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Marketing -->
-    <section data-index="3">
-        <div class="card">
-            <div class="text-[var(--accent)] mb-4">
-                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z" />
-                </svg>
+    <!-- 3. AI & CHATBOTS - Fase 1/2 Bridge -->
+    <section data-index="3" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+        <div
+            class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6 pointer-events-auto">
+            <!-- Left: Features Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <div
+                    style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.2rem;">
+                    <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">💬</div>
+                    <div style="font-size: 0.85rem; color: #fff; font-weight: 500;">Chatbots</div>
+                    <div style="font-size: 0.7rem; opacity: 0.5;">Atención 24/7</div>
+                </div>
+                <div
+                    style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.2rem;">
+                    <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">🤖</div>
+                    <div style="font-size: 0.85rem; color: #fff; font-weight: 500;">GPT/Claude</div>
+                    <div style="font-size: 0.7rem; opacity: 0.5;">LLMs integrados</div>
+                </div>
+                <div
+                    style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.2rem;">
+                    <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📧</div>
+                    <div style="font-size: 0.85rem; color: #fff; font-weight: 500;">AI Email</div>
+                    <div style="font-size: 0.7rem; opacity: 0.5;">Respuestas inteligentes</div>
+                </div>
+                <div
+                    style="background: rgba(139, 242, 198, 0.1); border: 1px solid var(--accent); border-radius: 12px; padding: 1.2rem;">
+                    <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">🎯</div>
+                    <div style="font-size: 0.85rem; color: #fff; font-weight: 500;">Lead Qualification</div>
+                    <div style="font-size: 0.7rem; opacity: 0.5;">Califica automático</div>
+                </div>
             </div>
-            <div class="tag-line">02 — Growth</div>
-            <h2>Growth Marketing</h2>
-            <p>Estrategias de adquisición de usuarios basadas en datos. SEO técnico, campañas PPC y optimización de
-                conversión.</p>
-            <div
-                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
-                Más detalles ->
+
+            <!-- Right: Description -->
+            <div class="card flex flex-col items-center text-center md:items-start md:text-left"
+                style="max-width: none; border-color: var(--accent); position: relative;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span
+                        style="background: rgba(139, 242, 198, 0.2); padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.65rem; color: var(--accent);">FASE
+                        1-2</span>
+                </div>
+                <div class="text-[var(--accent)] mb-4">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+                    </svg>
+                </div>
+                <div class="tag-line">02 — AI</div>
+                <h2 class="section-h2">Chatbots & IA</h2>
+                <p style="margin-bottom: 1rem; opacity: 0.8;">El puente entre presencia y ventas. Conversar, calificar y
+                    guiar.</p>
+
+                <ul class="inline-block text-left"
+                    style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+                    <li style="color: var(--accent);">✓ Reduce 80% tickets de soporte</li>
+                    <li style="color: var(--accent);">✓ Califica leads automáticamente</li>
+                    <li style="color: var(--accent);">✓ Disponible en web, WhatsApp, email</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- 4. AI -->
-    <section data-index="4">
-        <div class="card">
-            <div class="text-[var(--accent)] mb-4">
-                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9.5 10c.83 0 1.5.67 1.5 1.5S10.33 13 9.5 13s-1.5-.67-1.5-1.5S8.67 10 9.5 10zm5 0c.83 0 1.5.67 1.5 1.5S15.33 13 14.5 13s-1.5-.67-1.5-1.5S13.67 10 14.5 10z" />
-                </svg>
+    <!-- 4. MARKETING - Fase 2 Component -->
+    <section data-index="4" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+        <div class="max-w-6xl mx-auto w-full px-6 pointer-events-auto">
+            <div class="text-center mb-10">
+                <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span
+                        style="background: rgba(139, 242, 198, 0.2); padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.65rem; color: var(--accent);">FASE
+                        2</span>
+                </div>
+                <div class="text-[var(--accent)] mb-4 flex justify-center">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z" />
+                    </svg>
+                </div>
+                <div class="tag-line" style="justify-content: center;">03 — Growth</div>
+                <h2 class="section-h2">Growth Marketing</h2>
+                <p style="max-width: 500px; margin: 0 auto; opacity: 0.7;">Estrategias basadas en datos para atraer y
+                    convertir.</p>
             </div>
-            <div class="tag-line">03 — AI</div>
-            <h2>Chatbots & AI</h2>
-            <p>Automatización de atención al cliente e integración de modelos LLM para potenciar tus flujos de trabajo.
-            </p>
-            <div
-                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
-                Más detalles ->
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="card" style="max-width: none; text-align: center; padding: 1.5rem;">
+                    <div style="font-size: 1.8rem; margin-bottom: 0.6rem;">🔍</div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.4rem; color: #fff;">SEO Técnico</h4>
+                    <p style="font-size: 0.75rem; opacity: 0.6;">Optimización para buscadores.</p>
+                </div>
+                <div class="card"
+                    style="max-width: none; text-align: center; border-color: var(--accent); padding: 1.5rem;">
+                    <div style="font-size: 1.8rem; margin-bottom: 0.6rem;">📈</div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.4rem; color: #fff;">Campañas PPC</h4>
+                    <p style="font-size: 0.75rem; opacity: 0.6;">ROI medible en ads.</p>
+                </div>
+                <div class="card" style="max-width: none; text-align: center; padding: 1.5rem;">
+                    <div style="font-size: 1.8rem; margin-bottom: 0.6rem;">🎯</div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.4rem; color: #fff;">CRO</h4>
+                    <p style="font-size: 0.75rem; opacity: 0.6;">Optimización continua.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Design -->
-    <section data-index="5">
-        <div class="card">
-            <div class="text-[var(--accent)] mb-4">
-                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M7 14c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM18.71.29c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.54 3.54 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.12-2.13zM14.06 4.94L3 16.01V20h3.99l11.07-11.07-3.99-3.99z" />
-                </svg>
+    <!-- 5. FUNNELS - Fase 2 Core -->
+    <section data-index="5" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+        <div
+            class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6 pointer-events-auto">
+            <!-- Left: Funnel Visual -->
+            <div style="text-align: center;">
+                <div style="max-width: 280px; margin: 0 auto;">
+                    <div
+                        style="background: rgba(139, 242, 198, 0.3); padding: 0.8rem; border-radius: 8px 8px 0 0; font-size: 0.85rem; color: #fff;">
+                        Tráfico</div>
+                    <div
+                        style="background: rgba(139, 242, 198, 0.2); padding: 0.8rem; margin: 0 10%; font-size: 0.8rem; color: rgba(255,255,255,0.8);">
+                        Landing Page</div>
+                    <div
+                        style="background: rgba(139, 242, 198, 0.15); padding: 0.8rem; margin: 0 20%; font-size: 0.75rem; color: rgba(255,255,255,0.7);">
+                        Lead Magnet</div>
+                    <div
+                        style="background: rgba(139, 242, 198, 0.1); padding: 0.8rem; margin: 0 30%; font-size: 0.7rem; color: rgba(255,255,255,0.6);">
+                        Nurturing</div>
+                    <div
+                        style="background: var(--accent); padding: 0.8rem; margin: 0 35%; border-radius: 0 0 8px 8px; font-size: 0.8rem; color: #000; font-weight: bold;">
+                        💰 Venta</div>
+                </div>
             </div>
-            <div class="tag-line">04 — Design</div>
-            <h2>Diseño UI/UX</h2>
-            <p>Interfaces que cautivan. Diseño de producto digital centrado en la usabilidad y la estética premium.</p>
-            <div
-                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
-                Más detalles ->
+
+            <!-- Right: Description -->
+            <div class="card flex flex-col items-center text-center md:items-start md:text-left"
+                style="max-width: none; border-color: var(--accent);">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span
+                        style="background: rgba(139, 242, 198, 0.2); padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.65rem; color: var(--accent);">FASE
+                        2 CORE</span>
+                </div>
+                <div class="text-[var(--accent)] mb-4">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3 4h18v2H3zM6 9h12v2H6zM10 14h4v2h-4z" />
+                    </svg>
+                </div>
+                <div class="tag-line">04 — Funnels</div>
+                <h2 class="section-h2">Tu Agente de Ventas</h2>
+                <p style="margin-bottom: 1rem; opacity: 0.8;">Captura, nurtura y cierra mientras tú te enfocas.</p>
+
+                <ul class="inline-block text-left"
+                    style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+                    <li style="color: var(--accent);">✓ Landing pages de alta conversión</li>
+                    <li style="color: var(--accent);">✓ Secuencias de email automatizadas</li>
+                    <li style="color: var(--accent);">✓ CRM integrado con seguimiento</li>
+                    <li style="color: var(--accent);">✓ Vende 24/7 sin intervención</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- 6. Automation -->
-    <section data-index="6">
-        <div class="card">
-            <div class="text-[var(--accent)] mb-4">
-                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M19.44 12.99l-2.54-.29c-.1-.98-.4-1.92-.85-2.78l1.6-1.95c.53-.64.42-1.58-.26-2.12l-1.41-1.41c-.63-.53-1.58-.42-2.12.26l-1.95 1.6c-.86-.45-1.8-.75-2.78-.85l-.29-2.54C9.06 2.43 8.24 2 7.5 2h-2c-.74 0-1.56.43-1.72 1.01l-.29 2.54c-.98.1-1.92.4-2.78.85l-1.95-1.6c-.64-.53-1.58-.42-2.12.26L1.22 6.44c-.53.63-.42 1.58.26 2.12l1.6 1.95c-.45.86-.75 1.8-.85 2.78l-2.54.29C-1.06 13.57 0 15 1.5 15h18c1.5 0 2.56-1.43 2.44-2.01zM12 15c-1.66 0-3-1.34-3-3s1.34 3 3-3 3 1.34 3 3-1.34 3-3 3z" />
-                </svg>
+    <!-- 6. AUTOMATION - Fase 3 Component -->
+    <section data-index="6" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+        <div class="max-w-6xl mx-auto w-full px-6 pointer-events-auto">
+            <div class="text-center mb-10">
+                <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span
+                        style="background: rgba(139, 242, 198, 0.2); padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.65rem; color: var(--accent);">FASE
+                        3</span>
+                </div>
+                <div class="text-[var(--accent)] mb-4 flex justify-center">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
+                    </svg>
+                </div>
+                <div class="tag-line" style="justify-content: center;">05 — Automation</div>
+                <h2 class="section-h2">Workflows & Orquestación</h2>
+                <p style="max-width: 550px; margin: 0 auto; opacity: 0.7;">Tu sistema aprende nuevas habilidades.</p>
             </div>
-            <div class="tag-line">05 — Automation</div>
-            <h2>Automatización</h2>
-            <p>Workflows inteligentes con n8n y Zapier. Reduce tareas repetitivas y escala tu productividad.</p>
-            <div
-                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
-                Más detalles ->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card" style="max-width: none;">
+                    <h4 style="font-size: 1.1rem; margin-bottom: 1rem; color: #fff;">🔗 Integraciones</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 0.25rem 0.6rem; border-radius: 15px; font-size: 0.7rem;">Notion</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 0.25rem 0.6rem; border-radius: 15px; font-size: 0.7rem;">Slack</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 0.25rem 0.6rem; border-radius: 15px; font-size: 0.7rem;">Stripe</span>
+                        <span
+                            style="background: rgba(139, 242, 198, 0.2); padding: 0.25rem 0.6rem; border-radius: 15px; font-size: 0.7rem; color: var(--accent);">+100
+                            más</span>
+                    </div>
+                </div>
+                <div class="card" style="max-width: none; border-color: var(--accent);">
+                    <h4 style="font-size: 1.1rem; margin-bottom: 1rem; color: #fff;">🤝 Colaboración Humano-IA</h4>
+                    <ul class="inline-block text-left"
+                        style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; line-height: 1.8;">
+                        <li style="color: var(--accent);">✓ Tu equipo toma decisiones estratégicas</li>
+                        <li style="color: var(--accent);">✓ El sistema ejecuta y reporta</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. Funnels -->
-    <section data-index="7">
-        <div class="card">
-            <div class="text-[var(--accent)] mb-4">
-                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M3 4h18v2H3zM6 9h12v2H6zM10 14h4v2h-4z" />
-                </svg>
-            </div>
-            <div class="tag-line">06 — Funnels</div>
-            <h2>Funnels de Venta</h2>
-            <p>Arquitectura de conversión. Diseñamos el viaje del usuario desde la visita hasta la venta.</p>
-            <div
-                class="mt-8 text-[var(--accent)] text-sm font-bold uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
-                Más detalles ->
+    <!-- 7. CTA Section -->
+    <section data-index="7" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center px-6 pointer-events-auto">
+            <div class="card"
+                style="max-width: none; border-color: var(--accent); background: linear-gradient(135deg, rgba(139, 242, 198, 0.08) 0%, rgba(0,0,0,0.4) 100%);">
+                <div class="tag-line" style="justify-content: center; color: var(--accent);">Siguiente Paso</div>
+                <h2 class="section-h2">¿Listo para Evolucionar?</h2>
+                <p
+                    style="margin-bottom: 1.5rem; max-width: 450px; margin-left: auto; margin-right: auto; opacity: 0.8;">
+                    Cuéntanos en qué fase estás y diseñamos tu roadmap de evolución personalizado.</p>
+                <a href="contact.html"
+                    style="display: inline-block; background: var(--accent); color: #000; font-weight: bold; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; transition: all 0.3s ease;">
+                    Agendar Llamada →
+                </a>
             </div>
         </div>
     </section>
@@ -178,27 +406,17 @@
                         style="height: 35px; width: auto; filter: drop-shadow(0 0 5px var(--accent));">
                     <span>SNOW TECH</span>
                 </a>
-                <p>Arquitectura digital para el futuro.</p>
-
-                <!-- Newsletter Form -->
-                <div class="mt-8 pt-6 border-t border-white/10">
-                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--accent)] mb-3">Newsletter</p>
-                    <form class="flex gap-2">
-                        <input type="email" placeholder="Email"
-                            class="bg-white/5 border border-white/10 px-3 py-2 rounded text-white text-xs w-full focus:border-[var(--accent)] outline-none transition-colors">
-                        <button
-                            class="bg-[var(--accent)] text-black px-3 py-2 rounded font-bold hover:bg-white transition-colors">></button>
-                    </form>
-                </div>
+                <p style="opacity: 0.6;">Tu presencia digital evoluciona.</p>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-4">Legal</h4>
-                <p class="opacity-60 hover:opacity-100 cursor-pointer">Privacidad</p>
-                <p class="opacity-60 hover:opacity-100 cursor-pointer">Términos</p>
+                <h4 class="text-white font-bold mb-4">Fases</h4>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Fase 1: Presencia</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Fase 2: Ventas</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Fase 3: Operaciones</p>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-4">Social</h4>
-                <p class="opacity-60 hover:opacity-100 cursor-pointer">Twitter</p>
+                <h4 class="text-white font-bold mb-4">Contacto</h4>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">hola@snowtech.io</p>
                 <p class="opacity-60 hover:opacity-100 cursor-pointer">LinkedIn</p>
             </div>
         </div>

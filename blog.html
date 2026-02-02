@@ -17,16 +17,19 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body>
+<body class="page-blog">
     <canvas id="canvas-particles"></canvas>
 
     <header>
-        <a href="index.html" class="logo-small"
+        <div class="logo-small"
             style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-            <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
-            <span>SNOW TECH</span>
-        </a>
-        <div class="hidden md:flex">
+            <a href="index.html"
+                style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; pointer-events: auto;">
+                <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
+                <span>SNOW TECH</span>
+            </a>
+        </div>
+        <div class="nav-desktop hidden md:flex">
             <a href="index.html" class="nav-link">INICIO</a>
             <a href="about.html" class="nav-link">NOSOTROS</a>
             <a href="services.html" class="nav-link">SERVICIOS</a>
@@ -41,113 +44,120 @@
         <div class="stasis-bar" id="stasis-bar"></div>
     </div>
 
-    <main class="pt-32 pb-20 px-4 min-h-screen">
-        <!-- Hero -->
-        <div
-            class="max-w-6xl mx-auto mb-16 flex flex-col md:flex-row justify-between items-end gap-8 border-b border-white/10 pb-12">
-            <div>
-                <div class="tag-line mb-4 animate-fade-in">Bitácora</div>
-                <h1 class="text-5xl md:text-7xl font-light text-white">Insights & Tech</h1>
+    <main>
+        <!-- 0. HERO -->
+        <section data-index="0"
+            class="flex flex-col justify-center items-center h-screen relative overflow-hidden px-4">
+            <div
+                class="max-w-6xl mx-auto w-full flex flex-col md:flex-row justify-between items-end gap-8 border-b border-white/10 pb-12 pointer-events-auto">
+                <div>
+                    <div class="tag-line mb-4 animate-fade-in">Bitácora</div>
+                    <h1 class="text-5xl md:text-7xl font-light text-white">Insights & Tech</h1>
+                </div>
+                <p class="text-gray-400 max-w-sm text-right">Explorando las fronteras de la inteligencia artificial,
+                    diseño generativo y arquitectura de software.</p>
             </div>
-            <p class="text-gray-400 max-w-sm text-right">Explorando las fronteras de la inteligencia artificial, diseño
-                generativo y arquitectura de software.</p>
-        </div>
+        </section>
 
-        <!-- Blog Grid -->
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <!-- 1. BLOG GRID -->
+        <section data-index="1"
+            class="flex flex-col justify-center items-center h-screen relative overflow-hidden px-4">
+            <div
+                class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pointer-events-auto">
+                <!-- Subscribe Card -->
+                <div class="card h-auto min-h-[400px] flex flex-col justify-center items-center text-center border border-[var(--accent)] bg-[var(--accent)]/5"
+                    style="opacity: 1; transform: none; width: 100%; max-width: none;">
+                    <h3 class="text-3xl text-white font-bold mb-4">Stay Ahead</h3>
+                    <p class="text-gray-400 mb-8 max-w-xs text-sm">Inteligencia crítica sobre arquitectura digital.</p>
+                    <form class="flex flex-col gap-4 w-full max-w-xs px-4">
+                        <input type="email" placeholder="Email corporativo"
+                            class="bg-black/50 border border-white/20 px-4 py-3 rounded text-white focus:border-[var(--accent)] outline-none text-sm">
+                        <button
+                            class="bg-[var(--accent)] text-black font-bold py-3 rounded hover:bg-white transition-colors uppercase tracking-widest text-xs">SUSCRIBIRSE</button>
+                    </form>
+                </div>
 
-            <!-- Subscribe Card -->
-            <div class="card h-auto min-h-[400px] flex flex-col justify-center items-center text-center border border-[var(--accent)] bg-[var(--accent)]/5"
-                style="opacity: 1; transform: none; width: 100%; max-width: none;">
-                <h3 class="text-3xl text-white font-bold mb-4">Stay Ahead</h3>
-                <p class="text-gray-400 mb-8 max-w-xs text-sm">Inteligencia crítica sobre arquitectura digital.
-                    Suscríbete a nuestra bitácora.</p>
-                <form class="flex flex-col gap-4 w-full max-w-xs">
-                    <input type="email" placeholder="Email corporativo"
-                        class="bg-black/50 border border-white/20 px-4 py-3 rounded text-white focus:border-[var(--accent)] outline-none text-sm">
-                    <button
-                        class="bg-[var(--accent)] text-black font-bold py-3 rounded hover:bg-white transition-colors uppercase tracking-widest text-xs">SUSCRIBIRSE</button>
-                </form>
+                <!-- Article 1 -->
+                <article
+                    class="card h-auto min-h-[400px] flex flex-col group cursor-pointer hover:-translate-y-2 transition-transform duration-300"
+                    style="opacity: 1; transform: none; width: 100%; max-width: none; padding: 0;">
+                    <div class="h-48 w-full bg-gradient-to-br from-blue-900 to-black relative overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity"
+                            style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop');">
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-[var(--accent)] text-black text-xs font-bold px-3 py-1 uppercase tracking-widest">
+                            Tech</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="text-gray-500 text-xs mb-4">OCT 12, 2024 • 5 MIN READ</div>
+                        <h3
+                            class="text-2xl text-white font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">
+                            Futuro de la IA</h3>
+                        <p class="text-sm text-gray-400 mb-6 flex-grow">Cómo los modelos LLM redefinen flujos creativos.
+                        </p>
+                        <div
+                            class="flex items-center gap-2 text-[var(--accent)] text-sm font-bold uppercase tracking-widest">
+                            Leer Artículo -></div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article
+                    class="card h-auto min-h-[400px] flex flex-col group cursor-pointer hover:-translate-y-2 transition-transform duration-300"
+                    style="opacity: 1; transform: none; width: 100%; max-width: none; padding: 0;">
+                    <div class="h-48 w-full bg-gradient-to-br from-purple-900 to-black relative overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity"
+                            style="background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop');">
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white text-black text-xs font-bold px-3 py-1 uppercase tracking-widest">
+                            Design</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="text-gray-500 text-xs mb-4">SEP 28, 2024 • 3 MIN READ</div>
+                        <h3
+                            class="text-2xl text-white font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">
+                            Minimalismo</h3>
+                        <p class="text-sm text-gray-400 mb-6 flex-grow">Por qué la reducción de ruido visual incrementa
+                            la conversión.</p>
+                        <div
+                            class="flex items-center gap-2 text-[var(--accent)] text-sm font-bold uppercase tracking-widest">
+                            Leer Artículo -></div>
+                    </div>
+                </article>
             </div>
+        </section>
 
-            <!-- Article 1 -->
-            <article
-                class="card h-auto min-h-[400px] flex flex-col group cursor-pointer hover:-translate-y-2 transition-transform duration-300"
-                style="opacity: 1; transform: none; width: 100%; max-width: none; padding: 0;">
-                <div class="h-48 w-full bg-gradient-to-br from-blue-900 to-black relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity">
+        <!-- 2. ARTICLE 3 -->
+        <section data-index="2"
+            class="flex flex-col justify-center items-center h-screen relative overflow-hidden px-4">
+            <div class="max-w-6xl mx-auto w-full flex justify-center pointer-events-auto">
+                <article
+                    class="card h-auto min-h-[400px] flex flex-col group cursor-pointer hover:-translate-y-2 transition-transform duration-300 max-w-xl"
+                    style="opacity: 1; transform: none; width: 100%; padding: 0;">
+                    <div class="h-48 w-full bg-gradient-to-br from-cyan-900 to-black relative overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity"
+                            style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop');">
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-[var(--accent)] text-black text-xs font-bold px-3 py-1 uppercase tracking-widest">
+                            Security</div>
                     </div>
-                    <div
-                        class="absolute top-4 left-4 bg-[var(--accent)] text-black text-xs font-bold px-3 py-1 uppercase tracking-widest">
-                        Tech
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="text-gray-500 text-xs mb-4">SEP 15, 2024 • 8 MIN READ</div>
+                        <h3
+                            class="text-2xl text-white font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">
+                            Ciberseguridad 2025</h3>
+                        <p class="text-sm text-gray-400 mb-6 flex-grow">Protocolos Zero-Trust y encriptación cuántica
+                            para el mañana.</p>
+                        <div
+                            class="flex items-center gap-2 text-[var(--accent)] text-sm font-bold uppercase tracking-widest">
+                            Leer Artículo -></div>
                     </div>
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <div class="text-gray-500 text-xs mb-4">OCT 12, 2024 • 5 MIN READ</div>
-                    <h3 class="text-2xl text-white font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">El
-                        Futuro de la IA Generativa</h3>
-                    <p class="text-sm text-gray-400 mb-6 flex-grow">Explorando cómo los modelos LLM están redefiniendo
-                        la arquitectura de software y los flujos de trabajo creativos.</p>
-                    <div
-                        class="flex items-center gap-2 text-[var(--accent)] text-sm font-bold uppercase tracking-widest">
-                        Leer Artículo <span>-></span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Article 2 -->
-            <article
-                class="card h-auto min-h-[400px] flex flex-col group cursor-pointer hover:-translate-y-2 transition-transform duration-300"
-                style="opacity: 1; transform: none; width: 100%; max-width: none; padding: 0;">
-                <div class="h-48 w-full bg-gradient-to-br from-purple-900 to-black relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity">
-                    </div>
-                    <div
-                        class="absolute top-4 left-4 bg-white text-black text-xs font-bold px-3 py-1 uppercase tracking-widest">
-                        Design
-                    </div>
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <div class="text-gray-500 text-xs mb-4">SEP 28, 2024 • 3 MIN READ</div>
-                    <h3 class="text-2xl text-white font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">
-                        Minimalismo Digital</h3>
-                    <p class="text-sm text-gray-400 mb-6 flex-grow">Por qué la reducción de ruido visual incrementa la
-                        conversión y mejora la retención de usuarios.</p>
-                    <div
-                        class="flex items-center gap-2 text-[var(--accent)] text-sm font-bold uppercase tracking-widest">
-                        Leer Artículo <span>-></span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Article 3 -->
-            <article
-                class="card h-auto min-h-[400px] flex flex-col group cursor-pointer hover:-translate-y-2 transition-transform duration-300"
-                style="opacity: 1; transform: none; width: 100%; max-width: none; padding: 0;">
-                <div class="h-48 w-full bg-gradient-to-br from-cyan-900 to-black relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity">
-                    </div>
-                    <div
-                        class="absolute top-4 left-4 bg-[var(--accent)] text-black text-xs font-bold px-3 py-1 uppercase tracking-widest">
-                        Security
-                    </div>
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <div class="text-gray-500 text-xs mb-4">SEP 15, 2024 • 8 MIN READ</div>
-                    <h3 class="text-2xl text-white font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">
-                        Ciberseguridad en 2025</h3>
-                    <p class="text-sm text-gray-400 mb-6 flex-grow">Protocolos Zero-Trust y encriptación cuántica:
-                        preparando tu infraestructura para las amenazas del mañana.</p>
-                    <div
-                        class="flex items-center gap-2 text-[var(--accent)] text-sm font-bold uppercase tracking-widest">
-                        Leer Artículo <span>-></span>
-                    </div>
-                </div>
-            </article>
-        </div>
+                </article>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -160,8 +170,6 @@
                     <span>SNOW TECH</span>
                 </a>
                 <p>Arquitectura digital para el futuro.</p>
-
-                <!-- Newsletter Form -->
                 <div class="mt-8 pt-6 border-t border-white/10">
                     <p class="text-xs font-bold uppercase tracking-widest text-[var(--accent)] mb-3">Newsletter</p>
                     <form class="flex gap-2">

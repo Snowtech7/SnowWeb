@@ -17,86 +17,149 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body>
+<body class="page-about">
     <canvas id="canvas-particles"></canvas>
+    <div id="layer-webgl"></div>
+    <div id="layer-css"></div>
 
     <header>
-        <a href="index.html" class="logo-small"
-            style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-            <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
-            <span>SNOW TECH</span>
-        </a>
-        <div class="hidden md:flex">
-            <a href="index.html" class="nav-link">INICIO</a>
-            <a href="about.html" class="nav-link" style="color:var(--accent)">NOSOTROS</a>
-            <a href="services.html" class="nav-link">SERVICIOS</a>
-            <a href="contact.html" class="nav-link">CONTACTO</a>
-            <a href="blog.html" class="nav-link">BLOG</a>
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center pointer-events-none px-4 md:px-8">
+            <a href="index.html" class="logo-small pointer-events-auto"
+                style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
+                <span>SNOW TECH</span>
+            </a>
+            <div class="nav-desktop hidden md:flex pointer-events-auto">
+                <a href="index.html" class="nav-link">INICIO</a>
+                <a href="about.html" class="nav-link" style="color:var(--accent)">NOSOTROS</a>
+                <a href="services.html" class="nav-link">SERVICIOS</a>
+                <a href="contact.html" class="nav-link">CONTACTO</a>
+                <a href="blog.html" class="nav-link">BLOG</a>
+            </div>
+            <button class="mobile-menu-btn md:hidden pointer-events-auto" onclick="toggleMobileMenu()">☰</button>
         </div>
     </header>
 
-    <main class="pt-32 pb-20 px-4 min-h-screen">
-        <!-- Hero -->
-        <div class="max-w-6xl mx-auto mb-20 text-center">
-            <div class="tag-line mb-4 animate-fade-in" style="justify-content: center;">Nuestra Esencia</div>
-            <h1 class="text-5xl md:text-7xl font-light text-white mb-6">Arquitectos del Futuro</h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Construimos la infraestructura digital que potenciará la
-                próxima generación de empresas.</p>
-        </div>
+    <!-- MOBILE OVERLAY -->
+    <div id="mobile-overlay"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-deep); z-index:100; display:none; flex-direction:column; justify-content:center; align-items:center; gap:2rem;">
+        <div onclick="toggleMobileMenu()"
+            style="position:absolute; top:2.5rem; right:4rem; cursor:pointer; color:white; font-size:2rem;">✕</div>
+        <a href="index.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">INICIO</a>
+        <a href="about.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">NOSOTROS</a>
+        <a href="services.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">SERVICIOS</a>
+        <a href="contact.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">CONTACTO</a>
+        <a href="blog.html" class="nav-link" onclick="toggleMobileMenu()" style="margin:0; font-size:1.5rem;">BLOG</a>
+    </div>
 
-        <!-- Mission / Vision Grid -->
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            <div class="card h-auto min-h-[300px] relative overflow-hidden group"
-                style="opacity: 1; transform: none; width: 100%; max-width: none;">
-                <div class="tag-line">Misión</div>
-                <h3 class="text-3xl text-white mb-4">Empoderar la Escala</h3>
-                <p>Proveer sistemas robustos y estéticos que permitan a las empresas crecer sin fricción técnica.
-                    Eliminamos la barrera entre la idea y la ejecución.</p>
-                <div
-                    class="absolute -bottom-10 -right-10 w-40 h-40 bg-[var(--accent)] opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity">
+    <script>
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-overlay');
+            overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
+
+    <main>
+        <!-- 0. HERO -->
+        <section data-index="0"
+            class="flex flex-col justify-center items-center h-screen text-center relative overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="tag-line mb-4 animate-fade-in" style="justify-content: center;">Nuestra Esencia</div>
+                <h1 class="hero-title">Arquitectos del Futuro</h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Construimos la infraestructura digital que potenciará
+                    la próxima generación de empresas.</p>
+            </div>
+        </section>
+
+        <!-- 1. ORIGIN -->
+        <section data-index="1" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+            <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">
+                <div class="card" style="max-width: none; border-color: var(--accent);">
+                    <div class="tag-line">01 — El Origen</div>
+                    <h2 class="section-h2">Por qué SNOW</h2>
+                    <p style="margin-bottom: 1.5rem; opacity: 0.8;">
+                        Nacimos de la necesidad de fusionar la **estética brutalista** con la **eficiencia absoluta**.
+                        En un mundo saturado de ruido digital, SNOW representa el silencio, la pureza y la estructura
+                        que permite que el contenido respire y las empresas escalen.
+                    </p>
+                    <p style="opacity: 0.6; font-size: 0.9rem;">
+                        No solo hacemos software; diseñamos protocolos de evolución para entidades que no se conforman
+                        con el status quo.
+                    </p>
+                </div>
+                <div class="hidden md:block">
+                    <div
+                        style="width: 100%; height: 300px; border: 1px dashed rgba(255,255,255,0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; position: relative;">
+                        <div
+                            style="position: absolute; width: 60%; height: 60%; border: 1px solid var(--accent); opacity: 0.3; transform: rotate(45deg);">
+                        </div>
+                        <div style="font-size: 3rem; opacity: 0.2; color: var(--accent);">❄</div>
+                    </div>
                 </div>
             </div>
-            <div class="card h-auto min-h-[300px] relative overflow-hidden group"
-                style="opacity: 1; transform: none; width: 100%; max-width: none;">
-                <div class="tag-line">Visión</div>
-                <h3 class="text-3xl text-white mb-4">La Web Sin Límites</h3>
-                <p>Un futuro donde la complexity del backend es invisible y la experiencia del usuario es inmersiva,
-                    instantánea y universal.</p>
-                <div
-                    class="absolute -bottom-10 -right-10 w-40 h-40 bg-[var(--accent)] opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity">
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <!-- Values -->
-        <div class="max-w-6xl mx-auto text-center mb-12">
-            <h2 class="text-3xl text-white mb-12">Valores Nucleares</h2>
-        </div>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-            <!-- Value 1 -->
-            <div
-                class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm hover:border-[var(--accent)] transition-colors">
-                <div class="text-[var(--accent)] text-4xl mb-4">✦</div>
-                <h4 class="text-xl text-white font-bold mb-2">Innovación Radical</h4>
-                <p class="text-sm text-gray-400">No aceptamos el status quo. Si existe una mejor manera, la construimos.
+        <!-- 2. MISSION -->
+        <section data-index="2" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <div class="tag-line" style="justify-content: center;">02 — Misión</div>
+                <h2 class="section-h2">Empoderar la Escala</h2>
+                <p class="text-xl opacity-80 mb-8 max-w-2xl mx-auto">
+                    Proveer sistemas robustos y estéticos que permitan a las empresas crecer sin fricción técnica.
+                    Eliminamos la barrera entre la idea y la ejecución.
                 </p>
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             </div>
-            <!-- Value 2 -->
-            <div
-                class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm hover:border-[var(--accent)] transition-colors">
-                <div class="text-[var(--accent)] text-4xl mb-4">⚡</div>
-                <h4 class="text-xl text-white font-bold mb-2">Velocidad Absoluta</h4>
-                <p class="text-sm text-gray-400">La latencia es el enemigo. Optimizamos cada milisegundo.</p>
+        </section>
+
+        <!-- 3. VISION -->
+        <section data-index="3" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <div class="tag-line" style="justify-content: center;">03 — Visión</div>
+                <h2 class="section-h2">La Web Sin Límites</h2>
+                <p class="text-xl opacity-80 mb-8 max-w-2xl mx-auto">
+                    Un futuro donde la complejidad del backend es invisible y la experiencia del usuario es inmersiva,
+                    instantánea y universal.
+                </p>
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             </div>
-            <!-- Value 3 -->
-            <div
-                class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm hover:border-[var(--accent)] transition-colors">
-                <div class="text-[var(--accent)] text-4xl mb-4">🛡️</div>
-                <h4 class="text-xl text-white font-bold mb-2">Integridad de Datos</h4>
-                <p class="text-sm text-gray-400">La seguridad no es una característica, es la base de todo lo que
-                    hacemos.</p>
+        </section>
+
+        <!-- 4. VALUES -->
+        <section data-index="4" class="flex flex-col justify-center items-center h-screen relative overflow-hidden">
+            <div class="max-w-6xl mx-auto w-full px-6">
+                <div class="text-center mb-12">
+                    <div class="tag-line" style="justify-content: center;">04 — Valores</div>
+                    <h2 class="section-h2">Valores Nucleares</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div
+                        class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm hover:border-[var(--accent)] transition-colors text-center md:text-left">
+                        <div class="text-[var(--accent)] text-4xl mb-4">✦</div>
+                        <h4 class="text-xl text-white font-bold mb-2">Innovación Radical</h4>
+                        <p class="text-sm text-gray-400">No aceptamos el status quo. Si existe una mejor manera, la
+                            construimos.</p>
+                    </div>
+                    <div
+                        class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm hover:border-[var(--accent)] transition-colors text-center md:text-left">
+                        <div class="text-[var(--accent)] text-4xl mb-4">⚡</div>
+                        <h4 class="text-xl text-white font-bold mb-2">Velocidad Absoluta</h4>
+                        <p class="text-sm text-gray-400">La latencia es el enemigo. Optimizamos cada milisegundo.</p>
+                    </div>
+                    <div
+                        class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm hover:border-[var(--accent)] transition-colors text-center md:text-left">
+                        <div class="text-[var(--accent)] text-4xl mb-4">🛡️</div>
+                        <h4 class="text-xl text-white font-bold mb-2">Integridad</h4>
+                        <p class="text-sm text-gray-400">La seguridad no es una característica, es la base de todo lo
+                            que hacemos.</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer>
@@ -109,17 +172,6 @@
                     <span>SNOW TECH</span>
                 </a>
                 <p>Arquitectura digital para el futuro.</p>
-
-                <!-- Newsletter Form -->
-                <div class="mt-8 pt-6 border-t border-white/10">
-                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--accent)] mb-3">Newsletter</p>
-                    <form class="flex gap-2">
-                        <input type="email" placeholder="Email"
-                            class="bg-white/5 border border-white/10 px-3 py-2 rounded text-white text-xs w-full focus:border-[var(--accent)] outline-none transition-colors">
-                        <button
-                            class="bg-[var(--accent)] text-black px-3 py-2 rounded font-bold hover:bg-white transition-colors">></button>
-                    </form>
-                </div>
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4">Legal</h4>
@@ -128,16 +180,17 @@
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4">Social</h4>
-                <p class="opacity-60 hover:opacity-100 cursor-pointer">Twitter</p>
                 <p class="opacity-60 hover:opacity-100 cursor-pointer">LinkedIn</p>
+                <p class="opacity-60 hover:opacity-100 cursor-pointer">Twitter</p>
             </div>
         </div>
-        <div class="pt-8 border-t border-white/10 opacity-50 text-xs">
+        <div class="pt-8 border-t border-white/10 opacity-50 text-xs text-center">
             © 2024 SNOW Inc. All systems operational.
         </div>
     </footer>
 
     <script type="module" src="assets/js/main.js"></script>
 </body>
+
 
 </html>

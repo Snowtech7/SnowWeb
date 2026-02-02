@@ -21,19 +21,45 @@
     <canvas id="canvas-particles"></canvas>
 
     <header>
-        <a href="index.html" class="logo-small"
-            style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-            <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
-            <span>SNOW TECH</span>
-        </a>
-        <div class="hidden md:flex">
-            <a href="index.html" class="nav-link">INICIO</a>
-            <a href="about.html" class="nav-link">NOSOTROS</a>
-            <a href="services.html" class="nav-link">SERVICIOS</a>
-            <a href="contact.html" class="nav-link" style="color:var(--accent)">CONTACTO</a>
-            <a href="blog.html" class="nav-link">BLOG</a>
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center pointer-events-none px-4 md:px-8">
+            <a href="index.html" class="logo-small pointer-events-auto"
+                style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                <img src="assets/logo.png" alt="Snow Tech" style="height: 40px; width: auto;">
+                <span>SNOW TECH</span>
+            </a>
+            <div class="nav-desktop hidden md:flex pointer-events-auto">
+                <a href="index.html" class="nav-link">INICIO</a>
+                <a href="about.html" class="nav-link">NOSOTROS</a>
+                <a href="services.html" class="nav-link">SERVICIOS</a>
+                <a href="contact.html" class="nav-link" style="color:var(--accent)">CONTACTO</a>
+                <a href="blog.html" class="nav-link">BLOG</a>
+            </div>
+            <button class="mobile-menu-btn md:hidden pointer-events-auto" onclick="toggleMobileMenu()">☰</button>
         </div>
     </header>
+
+    <!-- MOBILE OVERLAY -->
+    <div id="mobile-overlay"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-deep); z-index:100; display:none; flex-direction:column; justify-content:center; align-items:center; gap:2rem;">
+        <div onclick="toggleMobileMenu()"
+            style="position:absolute; top:2.5rem; right:4rem; cursor:pointer; color:white; font-size:2rem;">✕</div>
+        <a href="index.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">INICIO</a>
+        <a href="about.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">NOSOTROS</a>
+        <a href="services.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">SERVICIOS</a>
+        <a href="contact.html" class="nav-link" onclick="toggleMobileMenu()"
+            style="margin:0; font-size:1.5rem;">CONTACTO</a>
+        <a href="blog.html" class="nav-link" onclick="toggleMobileMenu()" style="margin:0; font-size:1.5rem;">BLOG</a>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-overlay');
+            overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
 
     <div class="hud">
         <span class="hud-value" id="speed-meter">0</span> <span
@@ -41,71 +67,76 @@
         <div class="stasis-bar" id="stasis-bar"></div>
     </div>
 
-    <main class="pt-32 pb-20 px-4 min-h-screen flex items-center">
-        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <main>
+        <section data-index="0"
+            class="flex flex-col justify-center items-center h-screen relative overflow-hidden px-4">
+            <div
+                class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pointer-events-auto">
 
-            <!-- Left Info -->
-            <div class="text-left">
-                <div class="tag-line mb-4 animate-fade-in">Conexión</div>
-                <h1 class="text-5xl md:text-6xl font-light text-white mb-8">Inicia la Transmisión</h1>
-                <p class="text-xl text-gray-400 mb-12">Estamos listos para recibir los parámetros de tu próximo
-                    proyecto. Nuestro equipo decodificará tus requerimientos en 24 horas.</p>
+                <!-- Left Info -->
+                <div class="text-left">
+                    <div class="tag-line mb-4 animate-fade-in">Conexión</div>
+                    <h1 class="hero-title">Inicia la Transmisión</h1>
+                    <p class="text-xl text-gray-400 mb-12">Estamos listos para recibir los parámetros de tu próximo
+                        proyecto. Nuestro equipo decodificará tus requerimientos en 24 horas.</p>
 
-                <div class="space-y-8">
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 rounded-full border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] shrink-0 bg-[#00f0ff10]">
-                            ✉
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] shrink-0 bg-[#00f0ff10]">
+                                ✉
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Email Encriptado</h4>
+                                <p class="text-gray-400">hello@snowtech.io</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="text-white font-bold mb-1">Email Encriptado</h4>
-                            <p class="text-gray-400">hello@snowtech.com</p>
-                        </div>
-                    </div>
 
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 rounded-full border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] shrink-0 bg-[#00f0ff10]">
-                            📍
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold mb-1">Base de Operaciones</h4>
-                            <p class="text-gray-400">Dodecahedron Tower, Floor 42<br>Digital District</p>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] shrink-0 bg-[#00f0ff10]">
+                                📍
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Base de Operaciones</h4>
+                                <p class="text-gray-400">Dodecahedron Tower, Floor 42<br>Digital District</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Right Form -->
-            <div class="card h-auto p-10" style="opacity: 1; transform: none; width: 100%; max-width: none;">
-                <h3 class="text-2xl text-white mb-6 font-bold">Formulario de Contacto</h3>
-                <form class="flex flex-col gap-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex flex-col gap-2">
-                            <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Identidad</label>
-                            <input type="text" placeholder="Tu Nombre"
-                                class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors">
+                <!-- Right Form -->
+                <div class="card h-auto p-10" style="opacity: 1; transform: none; width: 100%; max-width: none;">
+                    <h3 class="text-2xl text-white mb-6 font-bold">Formulario de Contacto</h3>
+                    <form class="flex flex-col gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex flex-col gap-2">
+                                <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Identidad</label>
+                                <input type="text" placeholder="Tu Nombre"
+                                    class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors">
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Frecuencia</label>
+                                <input type="email" placeholder="Tu Email"
+                                    class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors">
+                            </div>
                         </div>
+
                         <div class="flex flex-col gap-2">
-                            <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Frecuencia</label>
-                            <input type="email" placeholder="Tu Email"
-                                class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors">
+                            <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Datos del
+                                Mensaje</label>
+                            <textarea placeholder="Cuéntanos sobre tu proyecto..." rows="4"
+                                class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"></textarea>
                         </div>
-                    </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="text-xs uppercase tracking-widest text-[var(--accent)]">Datos del Mensaje</label>
-                        <textarea placeholder="Cuéntanos sobre tu proyecto..." rows="4"
-                            class="bg-white/5 border border-white/10 p-4 rounded text-white focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"></textarea>
-                    </div>
-
-                    <button
-                        class="bg-[var(--accent)] text-black font-bold py-4 px-8 mt-4 hover:bg-white transition-colors tracking-widest uppercase text-sm">
-                        Enviar Transmisión
-                    </button>
-                </form>
+                        <button
+                            class="bg-[var(--accent)] text-black font-bold py-4 px-8 mt-4 hover:bg-white transition-colors tracking-widest uppercase text-sm">
+                            Enviar Transmisión
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer>

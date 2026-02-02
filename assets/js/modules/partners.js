@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+    import * as THREE from 'three';
 import { CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
 
 export function createPartnerSystem(cssScene) {
